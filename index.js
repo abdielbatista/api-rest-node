@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const app = express();
 const dotenv = require('dotenv');
 
+
 //ler JSON
 app.use(
     express.urlencoded({
@@ -13,18 +14,17 @@ app.use(
 )
 app.use(express.json());
 
+//rota
+const personRoutes = require('./routes/personRoutes');
+app.use('/person', personRoutes)
+
+
 //rota inicial / endpoint
 app.get('/',(req,res)=>{
     res.json({message: "Oi Humano!"})
 })
 
-
-//gera.48Gd$RH9_W
-
-//mongodb+srv://abdi:gera.48Gd$RH9_W@apicluster.aewac.mongodb.net/banco-api?retryWrites=true&w=majority
-
 //porta
-
 dotenv.config();
 const DB_USER = process.env.DB_USER;
 const DB_PASSWORD = process.env.DB_PASSWORD;

@@ -10,6 +10,7 @@ router.post('/', async(req,res)=>{
 
     if(!name){
         res.status(422).json({error: 'Nome obrigatório'})
+        return
     }
 
     const person = {
@@ -39,5 +40,26 @@ router.get('/', async(req,res)=>{
         res.status(500).json({error: error})
     }
 })
+
+//extrair dado da requisição pela url
+router.get('/:id', async(req, res) =>{
+
+    const id = req.params.id
+    
+    try{
+        const person = await Person.findOne({_id: id})
+
+        if(!person){
+            res.status(422).json({message: 'O usuário não foi encontrado!'})
+            return
+        }
+
+        res.status(200).json(person)
+    }catch(error){
+        res.status(500).json({error: error})
+    }
+})
+
+//update put e patch
 
 module.exports = router

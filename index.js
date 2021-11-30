@@ -1,3 +1,5 @@
+//video mostrando a criação desta api disponível em: https://www.youtube.com/watch?v=K5QaTfE5ylk&ab_channel=MatheusBattisti-HoradeCodar
+
 //config inicial
 
 const express = require('express');
